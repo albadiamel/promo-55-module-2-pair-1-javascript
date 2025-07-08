@@ -111,6 +111,14 @@ Extra. Un listener para todos (Hay que tener completo el anterior para hacerlo)*
 //1. Control de acceso
 
 
+const userName = "Maria";
+const isUserAllowed = userName === "Maria" || userName === "Luisa";
+console.log(isUserAllowed ? "Bienvenida, " + userName : "Lo siento pero el usuario que has intorducido no está registrado");
+
+
+//2. Completa las condiciones
+
+if ()
 
 
 
