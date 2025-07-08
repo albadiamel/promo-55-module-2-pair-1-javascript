@@ -1,0 +1,39 @@
+.boton1 {
+    background-color: #11D4BB;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+}
+.boton2 {
+    background-color: #11D4BB;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+}
+
+.boton-desactivado {
+    opacity: 0.5;
+}
+
+.boton3 {
+    background-color: #11D4BB;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+}
+
+.boton3:hover {
+    background-color: #00927F;
+}
+
+
+.botonClick {
+    background-color: #11D4BB;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+}
