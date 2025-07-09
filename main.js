@@ -31,6 +31,9 @@ console.log(myaddress);
 
 //6. Desabilitando botones
 document.querySelector(".boton2").classList.add("boton-desactivado");
+//document.querySelector(".boton2").classList.remove("boton2");
+//document.querySelector(".boton2").style.opacity = 0.5;
+
 
 /*EJERCICIOS DE LOS EVENTOS
 1.¿Cómo te llamas?*/
@@ -63,7 +66,7 @@ const textoInput = document.querySelector(".texto");
 const parrafo = document.querySelector(".parrafo-vacio");
 
 textoInput.addEventListener("input", (event) => {
-    parrafo.innerHTML = event.target.value;
+    parrafo.innerHTML = event.currentTarget.value;
 })
 
 //5. Estilo para un botón*/
@@ -88,28 +91,24 @@ const split = 'Split';
 
 const start = document.querySelector(".empezar");
 const lista = document.querySelector(".lista-peliculas")
-
-start.addEventListener("click", () => {
-    lista.innerHTML =
-    '<li>' + inception + '</li>' +
-    '<li>' + theButterFlyEffect + '</li>' +
-    '<li>' + eternalSunshineOfTheSM + '</li>' +
-    '<li>' + blueVelvet + '</li>' +
-    '<li>' + split + '</li>';
-})
-/*Faltaría la parte de que al hacer click sobre el nombre de cada película aparezca el nombre de esa película. Mejor preguntarle a Ana.
-
 const seleccion = document.querySelector(".peli-seleccionada");
 
-inception.addEventListener("click", () => {
-    seleccion.innerHTML = 'La peli seleccionada es' + inception;
+start.addEventListener("click", () => {
+  lista.innerHTML = '<li>' + inception + '</li>';
+  lista.innerHTML += '<li>' + theButterFlyEffect + '</li>';
+  lista.innerHTML += '<li>' + eternalSunshineOfTheSM + '</li>';
+  lista.innerHTML += '<li>' + blueVelvet + '</li>';
+  lista.innerHTML += '<li>' + split + '</li>';
 })
 
-Extra. Un listener para todos (Hay que tener completo el anterior para hacerlo)*/
+lista.addEventListener("click", (event) => {
+  const peli = event.target.textContent
+  seleccion.innerHTML = "La peli seleccionada es: " + peli;
+})
+
 
 //EJERCICIOS DE CONDICIONALES
 //1. Control de acceso
-
 
 const userName = "Maria";
 const isUserAllowed = userName === "Maria" || userName === "Luisa";
@@ -118,7 +117,35 @@ console.log(isUserAllowed ? "Bienvenida, " + userName : "Lo siento pero el usuar
 
 //2. Completa las condiciones
 
-if ()
+const numero = 51
+
+if (numero === 0) {
+  console.log('El número es 0')
+} else if (numero < 0) {
+  console.log('El número es negativo')
+} else if (numero + 2 < 13 && numero >= 20) {
+  console.log('El número más 2 es mayor que 13 pero menor o igual que 20')
+} else if (numero > 20 && numero < 50) {
+  console.log('El número es mayor que 20 pero menor que 50')
+} else {
+  console.log('el número no es 123123125')
+}
+
+// 3. Nadie sin avatar
+
+// avatar por defecto
+const DEFAULT_AVATAR = "http://placehold.jp/150x150.png";
+// avatar que eligió el usuario al registrarse
+let userAvatar = "https://dev.adalab.es/gato-siames.webp";
+
+const avatarImg = document.querySelector(".user__avatar");
+
+avatarImg.src = userAvatar || DEFAULT_AVATAR;
+
+//const userContainer = document.querySelector(".user");
+
+//userContainer.innerHTML += '<img class="user__avatar" src="userAvatar || DEFAULT_AVATAR" />';
+
 
 
 
