@@ -146,10 +146,75 @@ avatarImg.src = userAvatar || DEFAULT_AVATAR;
 
 //userContainer.innerHTML += '<img class="user__avatar" src="userAvatar || DEFAULT_AVATAR" />';
 
+// EJERCICIOS DE LOS DATOS
+//1. "Trasteando" la consola
+// Abre la consola y haz las siguientes pruebas:
+// 1. Realiza una suma sencilla con nuestro número favorito y el de nuestra compañera y pulsa Intro.
+// 2. Haz lo mismo, pero guardando los números en constantes y utilizando estas para sumar.
 
+const numberEleonora = 13;
+const numberAlba = 7;
 
+const sum = 13 + 7;
+console.log("Resultado de la suma:", sum);
 
+//3. 3. El precio de la fruta
+/* Imagina que vamos a la frutería y compramos lo siguiente:
+2 kilos de kiwis a 5€ / kg
+3 kilos de peras conferencia (no una cualquiera) a 2€ / kg
+Medio kilo de uvas a 4€ / kg*/
 
+// Calcula el precio total como si lo hiciésemos en una hoja de papel de toda la vida pero de manera mucho más guay. El resultado debe mostrarse en la consola del navegador.
+
+const kiwis = 2 * 5;
+const peras = 3 * 2;
+const uvas = 0.5 * 4;
+
+const totalPrize = kiwis + peras + uvas;
+console.log("El precio total es:", totalPrize);
+
+//4. Calcular el número total de horas que hemos vivido
+// Crea un programa que nos diga cuántas horas en total hemos vivido. Por ejemplo, si alguien tiene 60 años, este código debería mostrar un mensaje con el número 525600.
+
+const totalHours = 30 * 365 * 24;
+console.log("En total he vivido:", totalHours);
+
+// 5. Lista de perretes
+// Pinta tres elementos li dentro de una lista ul con la información de gatitos: un nombre y una foto, los obtendremos a partir de los siguientes datos:
+
+const firstDogImage =
+  'https://images.dog.ceo/breeds/schipperke/n02104365_8156.jpg';
+const firstDogName = 'Dina';
+
+const secondDogImage =
+  'https://images.dog.ceo/breeds/collie-border/n02106166_355.jpg';
+const secondDogName = 'Luna';
+
+const thirdDogImage =
+  'https://images.dog.ceo/breeds/affenpinscher/n02110627_7065.jpg';
+const thirdDogName = 'Lana';
+
+const dogList = document.querySelector(".dog-list").innerHTML = 
+`<li>${firstDogName} <img src="${firstDogImage}" /></li> 
+<li>${secondDogName} <img src="${secondDogImage}" /></li> 
+<li>${thirdDogName} <img src="${thirdDogImage}" /></li>`
+
+/*6. Cuántas letras tiene tu nombre
+Haz el código necesario para crear un programa que pinte en HTML lo siguiente:
+El nombre de mi compañera es Leticia Fernández Sánchez, y está compuesto por 23 caracteres,
+remplazando Leticia Fernández Sánchez por el nombre de nuestra compañera y 23 por la longitud de la cadena con su nombre.
+Nota: tendremos que guardar el nombre de nuestra compañera en una constante para poder trabajar con él.*/
+
+const nameEleonora = "Eleonora";
+console.log("Caracteres del nombre:", nameEleonora.length);
+
+const nameLetters = document.querySelector(".name-letters").innerHTML = 
+`El nombre de mi compañera es ${nameEleonora} y está compuesto por ${nameEleonora.length} caracteres`;
+
+//2. Dayana mola
+const superWave = document.querySelector(".super-wave").classList.add("styleOLA");
+
+//const removeBackground = document.querySelector(".main").classList.remove("main");
 
 
 

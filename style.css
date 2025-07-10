@@ -37,3 +37,19 @@
     border: none;
     color: white;
 }
+
+
+.main {
+  background-color: pink;
+}
+
+.main__title {
+  color: red;
+}
+
+.styleOLA {
+    color: green;
+    font-size: 40px;
+    font-weight: bold;
+    text-decoration: underline;
+}
