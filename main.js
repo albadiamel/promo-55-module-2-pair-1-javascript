@@ -216,5 +216,37 @@ const superWave = document.querySelector(".super-wave").classList.add("styleOLA"
 
 //const removeBackground = document.querySelector(".main").classList.remove("main");
 
+// FUNCIONES
+
+// 1. Multiplicación, Media y Pares
+
+function mul(a, b) {
+  console.log(a * b);
+  return a * b;
+}
+
+mul(5, 9);
+
+//
+
+function media(a, b, c, d) {
+  console.log((a + b + c + d) / 4);
+  return a + b + c + d / 4;
+}
+
+media(1, 2, 3, 4);
+
+//
+
+function trueFalse(a) {
+  if (a % 2 == 0) {
+     console.log("El numero es par");
+  }  else
+      console.log("El numero es impar");
+}
+
+trueFalse(6);
+
+
 
 
