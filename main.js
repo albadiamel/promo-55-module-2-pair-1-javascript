@@ -247,6 +247,47 @@ function trueFalse(a) {
 
 trueFalse(6);
 
+// 2. Ticket con IVA
+
+function price(a) {
+  const priceIVA = a * 0.21
+  const priceTotal = a + priceIVA
+  console.log(`Precio sin IVA: ${a}, IVA: ${priceIVA} y Total: ${priceTotal}`);
+  return [a, priceIVA, priceTotal];
+}
+
+price(7);
+
+// 3. Variables globales
+
+// modificamos una variable de ámbito global
+
+let secretLetter = 'y';
+function mySecretLetter() {
+  secretLetter = 'x';
+  return secretLetter;
+}
+console.log(secretLetter); // devuelve "x"
+console.log(mySecretLetter()); // devuelve "x"
+
+
+// Extras:
+// Ejercicio Extra. querySelector para todas
 
 
 
+// 2.6 Funciones II
+// 1. Calculadora de modelo de caja
+
+function boxCalculator(borderBox, width, padding, borderSize) {
+if (borderBox) {
+  const contentWidth = width - 2 * padding - 2 * borderSize;
+  const totalWidth = width;
+  return `El ancho del contenido es: ${contentWidth} y el ancho total de la caja es: ${totalWidth}`;
+} else {
+  const contentWidth = width
+  const totalWidth = width + 2 * padding + 2 * borderSize;
+  return `El ancho del contenido es: ${contentWidth} y el ancho total de la caja es: ${totalWidth}`;
+}
+}
+console.log(boxCalculator(true, 100, 10, 2));
