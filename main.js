@@ -112,7 +112,7 @@ lista.addEventListener("click", (event) => {
 
 const userName = "Maria";
 const isUserAllowed = userName === "Maria" || userName === "Luisa";
-console.log(isUserAllowed ? "Bienvenida, " + userName : "Lo siento pero el usuario que has intorducido no está registrado");
+console.log(isUserAllowed ? "Bienvenida, " + userName : "Lo siento pero el usuario que has introducido no está registrado");
 
 
 //2. Completa las condiciones
@@ -136,15 +136,92 @@ if (numero === 0) {
 // avatar por defecto
 const DEFAULT_AVATAR = "http://placehold.jp/150x150.png";
 // avatar que eligió el usuario al registrarse
-let userAvatar = "https://dev.adalab.es/gato-siames.webp";
+let userAvatar = "https://dev.adalab.es/gato-siames.webp"; //<-- Si quitamos este se debe mostrar el avatar por defecto
 
-const avatarImg = document.querySelector(".user__avatar");
+const avatarImg = document.querySelector(".user__avatar").src = userAvatar || DEFAULT_AVATAR;
 
-avatarImg.src = userAvatar || DEFAULT_AVATAR;
+// 4. Conversor de edad de perro a humano
+//El primer año de un perro equivale a 15 años de humano
+//El segundo año de un perro equivale a nueve años de humano
+//A partir del tercero, cada año de perro equivale a 5 años de humano.
 
-//const userContainer = document.querySelector(".user");
+// Definimos la edad del perro
+const dogAge = 10;
+// Creamos una variable para guardar la edad equivalente en años humanos
+let humanAge = 0;
 
-//userContainer.innerHTML += '<img class="user__avatar" src="userAvatar || DEFAULT_AVATAR" />';
+// Si el perro tiene solo 1 año
+if (dogAge === 1) {
+  // Ese primer año equivale a 15 años humanos
+  humanAge = 15;
+// Si el perro tiene 2 años
+} else if (dogAge === 2) {
+  // El primer año vale 15 y el segundo vale 9, total 24
+  humanAge = 15 + 9;
+// Si el perro tiene más de 2 años
+} else {
+  // Primer año: 15 años humanos
+  // Segundo año: 9 años humanos
+  // Cada año extra (desde el tercero en adelante) vale 5 años humanos
+  // Por eso restamos 2 (porque esos ya están contados) y multiplicamos el resto por 5
+  humanAge = 15 + 9 + (dogAge - 2) * 5;
+}
+
+console.log(`El perro que tiene ${dogAge} años, tiene ${humanAge} años de humano.`);
+
+// 5. Recomendar de recetas
+
+// Creamos una variable constante con el nombre ingredient y le vamos a dar de valores pollo, merluza, espinacas o nada
+const ingredient = '' //<-- Cambiar por 'pollo', 'merluza' o 'espinacas'
+
+// Aquí le estamos diciendo que si el ingrediente que hay en la nevera es pollo...
+if (ingredient === 'pollo') {
+  // ...mande este mensaje a la consola
+  console.log('Tu ingrediente es pollo. Puedes freírte un filete con patatas.')
+// Si el ingrediente que hay en la nevera es merluza...
+} else if (ingredient === 'merluza') {
+  // ...mande este mensaje a la consola
+  console.log('Tu ingrediente es merluza. Puedes cocinar una merluzita en salsa verde.')
+// Si el ingrediente que hay en la nevera es espinacas...
+} else if (ingredient === 'espinacas'){
+  // ...mande este mensaje a la consola
+  console.log('Tu ingrediente es espinacas. Puedes cocinar unas espinacas rehogadas.')
+// Si en la nevera no hay nada...
+} else {
+  // ...mande este mensaje a la consola
+  console.log('Nada en la nevera.')
+}
+
+// 6. Año bisiesto
+
+// Creamos una variable constante con el año actual
+const currentYear = 2025;
+
+// Usamos % para ver cuánto sobra al dividir el año entre 4.
+// Esto nos ayuda a saber si el año es bisiesto o cuánto falta para el próximo.
+const module = currentYear % 4;
+
+// Si al dividir el año entre 4 sobra 3...
+if (module === 3) {
+  // ...significa que el próximo año (2026) se podrá dividir sin sobrar nada.
+  // Es decir, 2026 será bisiesto.
+  console.log(`El próximo año es bisiesto, el ${currentYear + 1}`)
+// Si sobra 2...
+} else if (module === 2) {
+  // ...entonces faltan dos años para llegar a un año que sí sea bisiesto.
+  // Eso sería el año 2027.
+  console.log(`Dentro de dos años es bisiesto, el ${currentYear + 2}`)
+  // Si sobra 1...
+} else if (module === 1) {
+  // ...entonces el siguiente año (2026) será bisiesto.
+  // Aquí se aclara claramente: "dentro de un año".
+  console.log(`Dentro de un año es bisiesto, el ${currentYear + 1}`)
+// Y si no sobra nada...
+} else {
+  // ...eso significa que el año actual se puede dividir exactamente entre 4.
+  // Por lo tanto, este mismo año es bisiesto.
+  console.log("Este año es bisiesto")
+}
 
 // EJERCICIOS DE LOS DATOS
 //1. "Trasteando" la consola
@@ -271,12 +348,8 @@ console.log(secretLetter); // devuelve "x"
 console.log(mySecretLetter()); // devuelve "x"
 
 
-// Extras:
-// Ejercicio Extra. querySelector para todas
 
-
-
-// 2.6 Funciones II
+// FUNCIONES II
 // 1. Calculadora de modelo de caja
 
 function boxCalculator(borderBox, width, padding, borderSize) {
@@ -291,3 +364,33 @@ if (borderBox) {
 }
 }
 console.log(boxCalculator(true, 100, 10, 2));
+
+
+// EJERCICIO HECHO POR ANA
+// A los valores booleanos se les pone is en el nombre
+
+const calculateWidth = (isBorderBox, width, padding, border) => {
+  if (isBorderBox) {
+    return `El ancho del contenido es ${width}, y el ancho de la caja es ${width}`
+  } else {
+    const contentSize = width + padding * 2 + border * 2;
+  return `El ancho del contenido es ${contentSize}, y el ancho de la caja es ${width}`
+  }
+};
+
+const result = calculateWidth(false, 300, 10, 5);
+console.log(result);
+
+// 2. Contador con botón
+
+const countButton = document.querySelector(".countButton");
+const text = document.querySelector(".count");
+
+let count = 0;
+
+const incrementCount = () => {
+  count++; // puede ser con ++ o con +1
+  text.innerHTML = count;
+};
+
+countButton.addEventListener("click", incrementCount);
