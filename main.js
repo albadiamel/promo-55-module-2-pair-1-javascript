@@ -394,3 +394,110 @@ const incrementCount = () => {
 };
 
 countButton.addEventListener("click", incrementCount);
+
+
+// EJERCICIOS DE OBJETOS
+// 1. Bio de Adalabers
+// Crea un objeto llamado adalaber1 con:
+// Nombre: 'Susana'
+// Edad: 34
+// Profesión: 'periodista'
+
+const adalaber1 = {
+  name: "Susana",
+  age: 34,
+  job: "periodista",
+}
+
+// Muestra esta frase en la consola o en la web usando las propiedades del objeto:
+// Mi nombre es Susana, tengo 34 años y soy periodista
+
+console.log(`Mi nombre es ${adalaber1.name}, tengo ${adalaber1.age} años y soy ${adalaber1.job}`);
+
+const adalaber2 = {
+  name: "Rocío",
+  age: 25,
+  job: "actriz",
+}
+
+console.log(`Mi nombre es ${adalaber2.name}, tengo ${adalaber2.age} años y soy ${adalaber2.job}`);
+
+// 2. A la carrera
+// Partiendo del objeto adalaber1 del ejercicio anterior, añade un método (una función) run que muestre en la consola la frase 'Estoy corriendo'.
+
+adalaber1.run = () => {
+  console.log("Estoy corriendo");
+}
+
+adalaber1.run();
+
+// Ahora, vamos a añadir un nuevo método runAMarathon que toma un parámetro distance que es un número. 
+// Al ejecutarlo, debe mostrarse en la consola el texto 'Estoy corriendo un maratón de 50 kilómetros' siendo 50 el valor del argumento distance que le hemos pasado.
+
+adalaber1.runAMarathon = (distance) => {
+  console.log(`Estoy corriendo un maratón de ${distance} kilometros`);
+}
+
+adalaber1.runAMarathon(50);
+
+// 3. Bio de Adalabers 2
+// Partiendo del objeto adalaber1 del ejercicio anterior, añade un método (una función) showBio que muestra en la consola la frase 
+// 'Mi nombre es María, tengo 34 años y soy periodista', usando el nombre, edad y estudios que están almacenados en el objeto.
+
+adalaber1.name = "María";
+
+adalaber1.showBio = () => {
+  console.log(`Mi nombre es ${adalaber1.name}, tengo ${adalaber1.age} años y soy ${adalaber1.job}`);
+}
+
+adalaber1.showBio();
+
+adalaber2.showBio = () => {
+  console.log(`Mi nombre es ${adalaber2.name}, tengo ${adalaber2.age} años y soy ${adalaber2.job}`);
+}
+
+adalaber2.showBio();
+
+// 5. Estructura de datos para un usuario
+// Crea un objeto para almacenar la información de un usuario y una constante llamada job donde guardaremos el valor 'developer'. 
+
+const job = "developer";
+
+const user = {
+  firstName: "Pepito",
+  lastName: "Gonzalez",
+  age: 40,
+  job: job
+};
+
+console.log(user);
+
+// Añades una propiedad llamada firstName y dale un valor.
+// Añade una propiedad llamada lastName y le dale un valor.
+// Añade una propiedad llamada age y le dale un valor numérico.
+// Añade una propiedad job a la que dale el valor de la constante job.
+// Comprueba que al obtener el valor de cada una de las propiedades que hemos definido hasta ahora, este es correcto.
+// Cambia el nombre del usuario por otro distinto.
+user.firstName = "Pedro";
+console.log(user);
+// Aumenta en 1 la edad del usuario.
+user.age = user.age + 1;
+console.log(user);
+// Comprueba de nuevo que todo sigue funcionando correctamente.
+
+// Ejercicio Extra. Investigando
+// Prepara un botón con un listener para loguear el objeto event en la consola. 
+// Investiga si la clave type que encontramos en él es una propiedad o un método.
+
+const buttonListener = document.querySelector(".buttonListener").addEventListener ("click", (event) => {
+  console.log(event);
+})
+
+// Prepara un input de tipo texto, a recogerlo desde JavaScript y a imprimirlo en la consola con console.dir para investigarlo 
+// y comentar con la compañera estas propiedades: value, nodeNamey required.
+ 
+const inputText = document.querySelector(".inputText");
+
+console.dir(inputText);
+console.log(inputText);
+
