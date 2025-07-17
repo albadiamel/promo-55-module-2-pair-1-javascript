@@ -519,7 +519,7 @@ console.log(movies);
 
 const workWithMovies = () => {  
   const movies = ["Perfect days", "Scarface", "Lost in translation"];
-  movies[3] = "Lady bird";
+  movies.push("Lady bird");
   movies[1] = "Metropolis";
   console.log(movies);
 }
