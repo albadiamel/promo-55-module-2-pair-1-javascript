@@ -526,3 +526,11 @@ const workWithMovies = () => {
 workWithMovies();
 
 console.log(Array.isArray(movies));
+
+
+// Ejemplo de función manejadora y evento
+
+const buttonClick = document.querySelector(".buttonClick").addEventListener("click", /*el .addEventListener("click") sería el evento*/ function () {
+  console.log("Hiciste click") /*el function () console.log("Hiciste click") sería la función manejadora*/
+});
+
