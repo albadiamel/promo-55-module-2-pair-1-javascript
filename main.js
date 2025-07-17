@@ -524,3 +524,5 @@ const workWithMovies = () => {
   console.log(movies);
 }
 workWithMovies();
+
+console.log(Array.isArray(movies));
