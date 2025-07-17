@@ -501,3 +501,26 @@ const inputText = document.querySelector(".inputText");
 console.dir(inputText);
 console.log(inputText);
 
+// 2.8 Arrays
+
+const movies = ["Perfect days", "Scarface", "Lost in translation"];
+
+// Añade al array anterior otra película más que te guste
+
+movies[3] = "Lady bird";
+console.log(movies);
+
+// Modifica la película que menos te guste de las que hay en el array por el nombre de otra que te guste más
+
+movies[1] = "Metropolis";
+console.log(movies);
+
+// Para terminar este ejercicio, vamos a encapsular todo el código que hemos creado en una función que no toma parámetros y que llamaremos workWithMovies
+
+const workWithMovies = () => {  
+  const movies = ["Perfect days", "Scarface", "Lost in translation"];
+  movies[3] = "Lady bird";
+  movies[1] = "Metropolis";
+  console.log(movies);
+}
+workWithMovies();
