@@ -472,7 +472,7 @@ const user = {
 
 console.log(user);
 
-// Añades una propiedad llamada firstName y dale un valor.
+// Añade una propiedad llamada firstName y dale un valor.
 // Añade una propiedad llamada lastName y le dale un valor.
 // Añade una propiedad llamada age y le dale un valor numérico.
 // Añade una propiedad job a la que dale el valor de la constante job.
@@ -526,13 +526,6 @@ const workWithMovies = () => {
 workWithMovies();
 
 console.log(Array.isArray(movies));
-
-
-// Ejemplo de función manejadora y evento
-
-const buttonClick = document.querySelector(".buttonClick").addEventListener("click", /*el .addEventListener("click") sería el evento*/ function () {
-  console.log("Hiciste click") /*el function () console.log("Hiciste click") sería la función manejadora*/
-});
 
 
 // EJERCICIOS DE BUCLES
@@ -594,20 +587,177 @@ console.log("Media de [1, 2, 3, 4, 5]: " + average([1, 2, 3, 4, 5]));
 
 // 3. Tenemos mucho en común
 
-const inputOne = document.querySelector(".input--one");
-const inputTwo = document.querySelector(".input--two");
-const buttonBook = document.querySelector(".button--book");
-const paragraphBook = document.querySelector(".paragraph--book");
+// Aquí se están guardando variables constantes de elementos del HTML con clases específicas.
+// Todas estas variables están declaradas en el scope global, así que son accesibles en cualquier parte del código, incluso dentro de funciones.
+const inputOne = document.querySelector(".input--one"); //caja de texto donde el usuario puede escribir.
+const inputTwo = document.querySelector(".input--two"); //caja de texto donde el usuario puede escribir.
+const buttonBook = document.querySelector(".button--book"); //botón que el usuario va a pulsar.
+const paragraphBook = document.querySelector(".paragraph--book"); //párrafo donde se va a mostrar texto.
 
-const books = [];
+const books = []; // Aquí creamos un array vacío llamado books. En este array vamos a guardar los valores que el usuario escribe en los inputs. También está en scope global.
+
+// Esta es una función flecha que se ejecutará cuando ocurra un evento. Es la función manejadora para el evento click ya que la hemos llamado handleClick.
 const handleClick = () => {
   console.log("has hecho click");
-  const resultOne = inputOne.value;
-  const resultTwo = inputTwo.value;
-  books.push(resultOne, resultTwo);
-  for (const book of books) {
-    paragraphBook.innerHTML += " A mí también me encantó " + book;
+  const resultOne = inputOne.value; //El .value toma el texto que el usuario escribió en las cajas. Esta variable está en scope local: solo existe dentro de esta función porque ha sido creada dentro de ella.
+  const resultTwo = inputTwo.value; //El .value toma el texto que el usuario escribió en las cajas. Esta variable está en scope local: solo existe dentro de esta función porque ha sido creada dentro de ella.
+  books.push(resultOne, resultTwo); //Agrega ambos valores al final del array books. Como books está en scope global, la función puede modificarlo.
+  for (const book of books) { //Recorre todos los libros que hay en el array books.
+    paragraphBook.innerHTML += " A mí también me encantó " + book; //Para cada libro, añade al contenido del párrafo un texto que dice: " A mí también me encantó " + book.
   }
 };
 
-buttonBook.addEventListener("click", handleClick);
+//Aquí le estamos diciendo a la función manejadora que se ejecute con el evento click del botón (buttonBook). De esta forma, cuando hagamos click en el botón, el navegador ejecuta automáticamente esta función.
+buttonBook.addEventListener("click", handleClick); //Aquí se le dice al botón: "Cuando alguien haga click, ejecuta la función handleClick."
+
+// ¿Cómo se conecta todo?
+// Cuando el usuario escribe en los inputs y pulsa el botón, el navegador llama a handleClick.
+// handleClick recoge el texto, lo guarda en el array global books.
+// Luego recorre el array y va mostrando en el párrafo el mensaje para cada libro.
+// Así, cada click agrega más libros y mensajes en pantalla.
+
+
+// Ejercicios de métodos funcionales
+
+// Ejercicios .map
+
+// 1. Inflar las notas
+// ¡Ya tenemos las notas del examen! Los profes, como somos así, las hemos metido en un
+// array: const marks = [5, 4, 6, 7, 9];. Casi todo el mundo lo ha hecho bastante bien
+// pero... vamos a hacer un poco de trampa de la buena :) Vamos a modificar las notas de
+// todas para añadirles 1 punto, ¿no? Pues usemos nuestro reciente amigo map para crear un
+// nuevo array inflatedMarks con las notas modificadas. Finalmente, mostraremos en la
+// consola las notas modificadas para ver que funciona correctamente. ¡Al lío!
+
+const marks = [5, 4, 6, 7, 9];
+
+const inflatedMarks = marks.map((mark) => mark + 1);
+
+console.log(inflatedMarks);
+
+// 2. Saludar es de buena educación
+// Estamos creando una aplicación web, y lo primero que queremos hacer es saludar al
+// usuario por su nombre, ¡como es debido! Tenemos un array con el listado de usuarios de
+// nuestra aplicación const names = ['María', 'Lucía', 'Susana', 'Rocío','Inmaculada']; 
+// y queremos conseguir otro array con los saludos, por ejemplo, 'Bienvenida Yolanda'. 
+// ¿Podríamos usar map para que nos echase una mano?
+
+const names = ['María', 'Lucía', 'Susana', 'Rocío','Inmaculada'];
+
+const nameMessage = names.map((name) => 'Bienvenida ' + name);
+
+console.log(nameMessage);
+
+// 3. Gracias por confiar en nosotros
+// Seguimos desarrollando nuestra aplicación web que romperá el mercado. Pero antes,
+// queremos agradecer a nuestros usuarios premium (de pago) su ayuda al inicio de la
+// aplicación. Por tanto, a los usuarios premium queremos saludarles así 'Bienvenida Yolanda. Gracias por confiar en nosotros. ', 
+// y mantener el saludo simple 'Bienvenida Yolanda' para el resto de usuarios.
+// Vamos a partir de este array con el listado de usuarios que incluye tanto su nombre como si
+// son usuarios premium o no. Tenemos que crear un nuevo array con los saludos. ¿Podremos hacerlo con map?
+
+const users = [
+  { name: "María", isPremium: false },
+  { name: "Lucía", isPremium: true },
+  { name: "Susana", isPremium: true },
+  { name: "Rocío", isPremium: false },
+  { name: "Inmaculada", isPremium: false },
+];
+
+const usersPremium = users.map((user) => {
+	if (user.isPremium) {
+    return 'Bienvenida ' + user.name + '. Gracias por confiar en nosotros.';
+  } else {
+    return 'Bienvenida ' + user.name;
+  }
+});
+
+console.log(usersPremium);
+
+// Ejercicios .filter()
+// 1. Solo los premium
+// Seguimos con nuestra app de moda y vamos a utilizar el listado de usuarios del ejercicio 3.
+// Gracias por confiar en nosotros. Pero ahora queremos tener un listado de usuarios (en
+// un array premiumUsers) que solo tenga los usuarios premium. ¿Sabremos hacerlo con filter?
+
+// const premiumUsers = users.filter((user) => {
+//   return user.isPremium;
+// }); Sintaxis larga
+
+const premiumUsers = users.filter((user) => user.isPremium); // Sintaxis corta (optimizada)
+
+console.log(premiumUsers);
+
+// 2. Los pares pueden entrar
+//Tenemos un listado de las contraseñas (PIN de 4 números) de los usuarios de nuestra web:
+const pins = [2389, 2384, 2837, 5232, 8998];
+// De ese listado de contraseñas, queremos que solo puedan entrar los que han elegido una
+// contraseña que es un número par para hacer A/B testing. ¿Nos ayudas a encontrar las
+// contraseñas usando filter?
+// PISTA: Recuerda que el resto de la división entera (módulo %) de número par es 0.
+
+const pairsPins = pins.filter((pin) => pin % 2 === 0); 
+
+console.log(pairsPins);
+
+// 3. Los usuarios que pueden entrar
+// Ya hemos conseguido las contraseñas pertenecientes a cada usuario. ¿Podrías darnos un
+// array con los usuarios que pueden acceder a la aplicación, es decir, los que tienen como
+// PIN un número par?
+
+const usuarios = [
+{ name: "María" // 0
+, isPremium: false, pin: 2389 },
+{ name: "Lucía" // 1
+, isPremium: true, pin: 2384 },
+{ name: "Susana" // 2
+, isPremium: true, pin: 2837 },
+{ name: "Rocío" // 3
+, isPremium: false, pin: 5232 },
+{ name: "Inmaculada" // 4
+, isPremium: false, pin: 8998 },
+];
+
+const pairsUsers = usuarios.filter((usuario) => usuario.pin % 2 === 0);
+
+console.log(pairsUsers);
+
+// Ejercicios .find() y .findIndex()
+// 1. Encuentra el usuario
+// a) En nuestra aplicación de gestión de usuarios, nos ha llegado una incidencia asociada al
+// PIN 5232. ¿Podrías encontrar el usuario que corresponde a ese PIN para poder
+// contactarle? Usa el método find para conseguirlo.
+
+const userPIN5232 = usuarios.find((usuario) => usuario.pin === 5232);
+
+console.log(userPIN5232);
+
+//b) Resulta que el usuario se ha dado de baja por la incidencia :( ¿Podrías borrarlo del array
+// de usuarios? Usa el método findIndex para encontrar su posición y bórralo usando
+// splice.
+
+const userQuit = usuarios.findIndex((usuario) => {
+  return usuario.pin === 5232;
+});
+
+console.log(userQuit);
+
+usuarios.splice(3, 1);
+console.log(usuarios);
+
+// Ejercicios .sort()
+// 1. Poniendo orden en nuestros usuarios
+// Vamos a volver al listado de usuarios del ejercicio 1. Encuentra el usuario de los ejercicios
+// de .find(), porque nos ha dado la manía de tenerlos ordenados. ¿Podrías ordenarlos por
+// orden alfabético? ¿Y por su número de PIN?
+
+const sortUsers = usuarios.sort((a, b) => a.name.localeCompare(b.name));
+console.log(sortUsers);
+
+const sortPin = usuarios.sort((a, b) => a.pin - b.pin);
+console.log(sortPin);
+
+
+
+
+
