@@ -65,3 +65,14 @@
     border: none;
     color: white;
 }
+
+.chihuahuaButton {
+    background-color: #11D4BB;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+}
+.chihuahua {
+    display: none;
+}

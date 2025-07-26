@@ -725,16 +725,15 @@ console.log(pairsUsers);
 // Ejercicios .find() y .findIndex()
 // 1. Encuentra el usuario
 // a) En nuestra aplicación de gestión de usuarios, nos ha llegado una incidencia asociada al
-// PIN 5232. ¿Podrías encontrar el usuario que corresponde a ese PIN para poder
-// contactarle? Usa el método find para conseguirlo.
+// PIN 5232. ¿Podrías encontrar el usuario que corresponde a ese PIN para poder contactarle?
+// Usa el método find para conseguirlo.
 
 const userPIN5232 = usuarios.find((usuario) => usuario.pin === 5232);
 
 console.log(userPIN5232);
 
 //b) Resulta que el usuario se ha dado de baja por la incidencia :( ¿Podrías borrarlo del array
-// de usuarios? Usa el método findIndex para encontrar su posición y bórralo usando
-// splice.
+// de usuarios? Usa el método findIndex para encontrar su posición y bórralo usando splice.
 
 const userQuit = usuarios.findIndex((usuario) => {
   return usuario.pin === 5232;
@@ -756,6 +755,109 @@ console.log(sortUsers);
 
 const sortPin = usuarios.sort((a, b) => a.pin - b.pin);
 console.log(sortPin);
+
+// EJERCICIOS DE PETICIONES
+
+// 1. Generar número aleatorio
+// Crea una aplicación que me genere un número aleatorio entero utilizando el API 'rand.fun'.
+// 1. Obtén el número aleatorio haciendo una petición a la siguiente URL
+// https://api.rand.fun/number/integer
+
+fetch ('https://api.rand.fun/number/integer')
+	.then((response) => {
+		return response.json();
+	})
+	.then((data) => {
+		console.log(data);
+	});
+
+//  Ejercicios JSON
+// 1. Chihuahas, chihuahas por todas partes
+// Sigamos trabajando con el API que muestra una imagen aleatoria de un perrito Dog API para crear una
+// página que muestre fotos sólo de perros de la raza chihuahua
+// 1. Consulta la documentación de esta API específicamente puedes hacer la petición
+// a la siguiente url: https://dog.ceo/api/breed/chihuahua/images/random. Primero
+// verifica en tu navegador que devuelve esta petición.
+
+// 2. Añade un botón a la página con el título 'Enséñame un Chihuahua' que al pulsarlo
+// se haga una petición al servidor de una imagen aleatoria y aparezca una imagen de
+// un Chihuahua. Añade una nueva función getChihuahua() que incluya esta
+// petición(puedes basarte en el ejemplo de la clase).
+
+const chihuahuaButton = document.querySelector(".chihuahuaButton");
+const chihuahuaImage = document.querySelector(".chihuahua");
+
+const handleClickButton = () => {
+  fetch ('https://dog.ceo/api/breed/chihuahua/images/random')
+	.then((response) => response.json())
+	.then((data) => {
+		chihuahuaImage.src = data.message
+    chihuahuaImage.style.display = "block"
+	})
+  .catch((error) => {
+		console.log('Error', error);
+	});
+}
+
+chihuahuaButton.addEventListener('click', handleClickButton);
+
+// 2. API de usuarios de GitHub
+// Ahora vamos a explorar un nuevo API: el API de usuarios de GitHub. La URL de este API es
+// https://api.github.com/users/{username}, donde {username} es el nombre del usuario en GitHub.
+// Por ejemplo, aquí tenéis la URL para obtener información del usuario de Isra
+// https://api.github.com/users/gootyfer. Si ponéis esta URL en una nueva pestaña del navegador
+// podréis observar qué datos nos devuelve el API.
+
+const inputfindUser = document.querySelector(".inputfindUser");
+const findUserGitHub = document.querySelector(".findUserGitHub");
+
+
+const handleClickFindButton = () => {
+  const userData = inputfindUser.value;
+  fetch ('https://api.github.com/users/ellyt24')
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data[userData]);
+    });
+}
+
+findUserGitHub.addEventListener('click', handleClickFindButton);
+
+// EJERCICIOS PETICIONES EN PARALELO
+// 1. Pintando varias imágenes a la vez
+// Partiendo el ejemplo anterior, vamos a modificarlo para que en lugar de pedir 2 imágenes en paralelo
+// pida 10, y el resultado sólo se pinte en la pantalla cuando las 10 imágenes hayan llegado del servidor.
+// Ahora sí que se nota el efecto de que se pintan todas a la vez, ¿verdad? Vamos a probar también con
+// 25 imágenes, para ver bien este efecto.
+
+
+const createPromise = () => 
+  fetch ('https://dog.ceo/api/breed/chihuahua/images/random')
+    .then((response) => {
+      console.log(createPromise);
+      return response.json();
+    })
+
+const promises = [createPromise(), createPromise(), createPromise(), createPromise(), createPromise(), createPromise(), createPromise(), createPromise(), createPromise(), createPromise()];
+
+Promise.all(promises).then((responses) => {
+	responses.forEach((response, i) => {
+    console.log(responses);
+		const img = document.querySelector('.chihuahua' + (i + 1));
+		img.src = response.message;
+	});
+})
+
+// EJERCICIOS DE PETICIONES AL SERVIDOR
+// 1. Explorar el API Star Wars
+
+fetch ('https://swapi.py4e.com/api/')
+	.then((response) => {
+		return response.json();
+	})
+	.then((data) => {
+		console.log(data);
+	});
 
 
 
